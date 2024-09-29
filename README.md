@@ -17,7 +17,7 @@ Client dApp using the following tools:
   wallets and loading data
 - [pnpm](https://pnpm.io/) for package management
 
-IMPORTANT ! : To select your desired network for the dapp, create a .env file at the root of the project, and inspire yourself from the .env.example file to select your network. You can have either VITE_NETWORK="testnet" for testnet or VITE_NETWORK="mainnet" for mainnet.
+IMPORTANT ! : To select your desired network for the dapp, create a .env file at the root of the project, add either VITE_NETWORK="testnet" for testnet or VITE_NETWORK="mainnet" for mainnet. Dapp default to testnet if no .env file is provided.
 
 For a full guide on how to build this dApp from scratch, visit this
 [guide](http://docs.sui.io/guides/developer/app-examples/e2e-counter#frontend).
