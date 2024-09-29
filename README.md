@@ -11,11 +11,13 @@ Client dApp using the following tools:
 - [TypeScript](https://www.typescriptlang.org/) for type checking
 - [Vite](https://vitejs.dev/) for build tooling
 - [TailwindCSS](https://tailwindcss.com/) for styling classes
-- [Diasy UI](https://daisyui.com/) for pre-built UI components
+- [Daisy UI](https://daisyui.com/) for pre-built UI components
 - [ESLint](https://eslint.org/) for linting
 - [`@mysten/dapp-kit`](https://sdk.mystenlabs.com/dapp-kit) for connecting to
   wallets and loading data
 - [pnpm](https://pnpm.io/) for package management
+
+IMPORTANT ! : To select your desired network for the dapp, create a .env file at the root of the project, and inspire yourself from the .env.example file to select your network. You can have either VITE_NETWORK="testnet" for testnet or VITE_NETWORK="mainnet" for mainnet.
 
 For a full guide on how to build this dApp from scratch, visit this
 [guide](http://docs.sui.io/guides/developer/app-examples/e2e-counter#frontend).

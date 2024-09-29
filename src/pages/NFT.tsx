@@ -42,30 +42,10 @@ const NFT = () => {
       <Navbar />
       
       <main className="container mx-auto px-4 py-8 mt-16">
-        <section className="hero bg-base-100 rounded-lg shadow-md mb-8">
-          
+        <section className="hero bg-base-100 rounded-lg shadow-md mb-8">  
           <NFTLogic />
         </section>
-
-
-         
       </main>
-        {/*
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {data.map((nft, index) => (
-            <div key={index} className="card bg-base-100 shadow-xl">
-              <div className="card-body">
-                <h2 className="card-title">{nft.name}</h2>
-                <p className="text-sm">{nft.description}</p>
-                <div className="card-actions justify-end">
-                  <button className="btn btn-primary">View</button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-         */}
-      
     </div>
 
   );
