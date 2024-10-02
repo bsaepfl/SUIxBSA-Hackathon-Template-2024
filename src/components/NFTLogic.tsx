@@ -47,7 +47,7 @@ const NFTLogic = () => {
   
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center w-full">
 
 
         
