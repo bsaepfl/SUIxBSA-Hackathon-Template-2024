@@ -4,26 +4,10 @@ import { ConnectModal, useCurrentAccount } from '@mysten/dapp-kit';
 import Navbar from '../components/Navbar'; // Import your Navbar component
 import { Box, Container, Flex, Heading } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
+import { network } from '../main';
 
 
 
-const NFTDetail = ({ objectId }) => {
-  const { data: nftDetail } = useSuiClientQuery(
-    'getDynamicFieldObject',
-    { parentId: objectId, name: {type: 'url', value: "display"} },
-    {
-      gcTime: 10000,
-    },
-  );
-
-  return (
-    <div>
-      {nftDetail && (
-        <img src={nftDetail.data.display} alt="NFT Image" />
-      )}
-    </div>
-  );
-};
 
 
 const NFTLogic = () => {
@@ -31,57 +15,62 @@ const NFTLogic = () => {
   const [nftUrls, setNftUrls] = useState({});
 
   const { SuiNSData, isSuiNSPending } = useResolveSuiNSName(currentAccount?.address);
+  
 
   const { data: NFTData, isPending, isError, error, refetch } = useSuiClientQuery(
     'getOwnedObjects',
-    { owner: currentAccount?.address },
+    { owner: currentAccount?.address ,
+      MatchAll: [
+        {
+          Field: {
+            fieldName: 'display',
+            
+          },
+        },
+      ],
+
+    options: {
+        "showType": true,
+        "showOwner": true,
+        "showPreviousTransaction": true,
+        "showDisplay": true,
+        "showContent": true,
+        "showBcs": false,
+        "showStorageRebate": false
+      }
+    },
     {
       gcTime: 10000,
     },
   );
-
-  const { data: NFTDetails, isPending: isPendingDetails, isError: isErrorDetails, error: errorDetails } = useSuiClientQuery(
-    'getObject',
-    { id: NFTData?.data[0]?.data.objectId },
-    {
-      gcTime: 10000,
-    },
-  );
-
-  const nftDetails = NFTData?.data.map((nft) => {
-  const { data: nftDetail } = useSuiClientQuery(
-    'getDynamicFieldObject',
-    { parentId: nft.data.objectId, name: {type: 'url', value: "display"} },
-    {
-      gcTime: 10000,
-    },
-  );
-  console.log(nftDetail)
-  return { objectId: nftDetail?.data?.objectId, url: nftDetail?.data?.display };
-});
-
-
-  //console.log(nftDetails);
-
+  console.log(NFTData)
+  
 
   return (
     <div className="flex justify-center items-center h-screen">
 
 
         
- <div className="grid grid-cols- md:grid-cols-2 lg:grid-cols-3 gap-4">
- {NFTData?.data.map((nft, index) => (
-            <div key={index} className="card bg-base-100 w-96 shadow-xl text-sm" >            <div className="card-body ">
-                <h1 className="card-title">{nft?.data.objectId}</h1>
-                <p className="text-sm truncateBoth">{nft?.data?.digest}</p>
-                <p className="text-sm">{nft?.data?.version}</p>
-                <NFTDetail objectId={nft.data.objectId} />
-                <div className="card-actions justify-end">
-                  <button className="btn btn">View</button>
-                </div>
+ <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  
+          { NFTData?.data.filter(nft => nft?.data?.display?.data !== null).map((nft, index) => (
+            <div key={index} className="card bg-base-100  shadow-xl text-sm" >            
+            <div className="card-body">
+              <h1 className="card-title text-3xl text-center">{nft?.data?.display?.data?.name}</h1>
+              <p className="text-sm font-bold">Creator: {nft?.data?.display?.data?.creator}</p>
+
+              <p className="text-sm">Description: {nft?.data?.display?.data?.description}</p>
+              
+              <p className="text-sm mt-4">Project URL: <a href={nft?.data?.display?.data?.project_url} target="_blank" rel="noopener noreferrer" className="link link-primary">{nft?.data?.display?.data?.project_url}</a></p>
+              <figure>
+                <img src={nft?.data?.display?.data?.image_url} alt="NFT Image" className="w-full mt-4" />
+              </figure>
+              <div className="card-actions justify-center mt-8">
+                <button className="btn btn-wide" onClick={() => window.open(`https://suiscan.xyz/${network}/object/${nft?.data.objectId.toString()}`, '_blank')}>View on Sui Explorer</button>
               </div>
             </div>
-          ))}
+            </div>
+          )) }
         </div>
         
          

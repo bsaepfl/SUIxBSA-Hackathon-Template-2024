@@ -7,6 +7,7 @@ import { CreateCounter } from "./CreateCounter";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from './pages/Main';
 import NFT from './pages/NFT';
+import Debug from './pages/Debug';
 
 function App() {
   const currentAccount = useCurrentAccount();
@@ -20,7 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/NFT" element={<NFT />} />
-
+        <Route path="/Debug" element={<Debug />} />
       </Routes>
     </BrowserRouter>
   );

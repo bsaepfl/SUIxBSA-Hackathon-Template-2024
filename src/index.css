@@ -87,6 +87,8 @@
   .card:active {
     color: #0d76fc;
     border-color: #0d76fc;
+  }.card-body {
+    color: #fff;
   }
   
   .card h2 {

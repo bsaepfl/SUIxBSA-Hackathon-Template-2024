@@ -10,7 +10,7 @@ import { networkConfig } from "./networkConfig.ts";
 import './index.css'; // Import the styles.css file
 import './output.css';
 
-const network = import.meta.env.VITE_NETWORK || 'testnet';
+export const network = import.meta.env.VITE_NETWORK || 'testnet';
 
 
 const queryClient = new QueryClient();

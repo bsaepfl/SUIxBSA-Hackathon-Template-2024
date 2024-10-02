@@ -38,11 +38,11 @@ const NFT = () => {
   }
 
   return (
-    <div className="min-h-screen bg-base-200" >
+    <div className="min-h-screen bg-base-200 " >
       <Navbar />
       
-      <main className="container mx-auto px-4 py-8 mt-16">
-        <section className="hero bg-base-100 rounded-lg shadow-md mb-8">  
+      <main className="container mx-auto px-4 py-8 mt-20">
+        <section className="hero bg-base-100 rounded-lg shadow-md ">  
           <NFTLogic />
         </section>
       </main>
