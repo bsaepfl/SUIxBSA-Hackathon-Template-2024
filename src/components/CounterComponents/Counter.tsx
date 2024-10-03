@@ -6,7 +6,7 @@ import {
 } from "@mysten/dapp-kit";
 import type { SuiObjectData } from "@mysten/sui/client";
 import { Transaction } from "@mysten/sui/transactions";
-import { useNetworkVariable } from "./networkConfig";
+import { useNetworkVariable } from "../../networkConfig";
 
 export function Counter({ id }: { id: string }) {
   const counterPackageId = useNetworkVariable("counterPackageId");

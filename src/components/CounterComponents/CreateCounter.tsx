@@ -1,6 +1,6 @@
 import { Transaction } from "@mysten/sui/transactions";
 import { useSignAndExecuteTransaction, useSuiClient } from "@mysten/dapp-kit";
-import { useNetworkVariable } from "./networkConfig";
+import { useNetworkVariable } from "../../networkConfig";
 
 export function CreateCounter({
   onCreated,

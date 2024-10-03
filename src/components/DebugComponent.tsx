@@ -1,93 +1,95 @@
+import React, { useState } from 'react';
+import { useSuiClient } from '@mysten/dapp-kit';
+import { useCurrentAccount } from '@mysten/dapp-kit';
 import { useResolveSuiNSName } from '@mysten/dapp-kit';
 import { useSuiClientQuery } from '@mysten/dapp-kit';
-import { ConnectModal, useCurrentAccount } from '@mysten/dapp-kit';
-import Navbar from '../components/Navbar'; // Import your Navbar component
-import { Box, Container, Flex, Heading } from "@radix-ui/themes";
-import { useEffect, useState } from "react";
-
-
-
-const NFTDetails = ({ objectId }) => {
-  const { data: nftDetail } = useSuiClientQuery(
-    'getDynamicFieldObject',
-    { parentId: objectId, name: {type: 'url', value: "display"} },
-    {
-      gcTime: 10000,
-    },
-  );
-
-  return (
-    <div>
-      {nftDetail && (
-        <img src={nftDetail.data.display} alt="NFT Image" />
-      )}
-    </div>
-  );
-};
-
+import { ConnectModal } from '@mysten/dapp-kit';
 
 const DebugComponent = () => {
-  const currentAccount = useCurrentAccount();
-  const [nftUrls, setNftUrls] = useState({});
+  const [packageId, setPackageId] = useState('');
+  const [moduleId, setModuleId] = useState('');
+  const [functionId, setFunctionId] = useState('');
+  const [args, setArgs] = useState('');
+  const [result, setResult] = useState(null);
+  const [error, setError] = useState(null);
 
+  const currentAccount = useCurrentAccount();
+  const suiClient = useSuiClient();
   const { SuiNSData, isSuiNSPending } = useResolveSuiNSName(currentAccount?.address);
 
-  const { data: NFTData, isPending, isError, error, refetch } = useSuiClientQuery(
-    'getOwnedObjects',
-    { owner: currentAccount?.address },
-    {
-      gcTime: 10000,
-    },
-  );
-
-  const { data: NFTDetails, isPending: isPendingDetails, isError: isErrorDetails, error: errorDetails } = useSuiClientQuery(
-    'getObject',
-    { id: NFTData?.data[0]?.data.objectId },
-    {
-      gcTime: 10000,
-    },
-  );
-
-  const nftDetails = NFTData?.data.map((nft) => {
-  const { data: nftDetail } = useSuiClientQuery(
-    'getDynamicFieldObject',
-    { parentId: nft.data.objectId, name: {type: 'display', value: "display"} },
-    {
-      gcTime: 10000,
-    },
-  );
-  console.log(nftDetail)
-  return { objectId: nftDetail?.data?.objectId, url: nftDetail?.data?.display };
-});
-
-
-  //console.log(nftDetails);
-
+  const handleExecuteTransaction = async () => {
+    try {
+      const tx = await suiClient.executeTransactionBlock({
+          kind: 'call',
+          data: {
+            packageId,
+            module: moduleId,
+            function: functionId,
+            typeArguments: [],
+            arguments: [JSON.parse(args)],
+          },
+        sender: currentAccount.address,
+      });
+      setResult(tx);
+    } catch (error) {
+      setError(error);
+    }
+  };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex-center items-center h-screen">
+      <div className="bg-base-100 w-96 shadow-xl p-4">
+        <h1 className="text-2xl font-bold mb-4">Debug Component</h1>
+        <form>
+          <input
+            type="text"
+            value={packageId}
+            onChange={(e) => setPackageId(e.target.value)}
+            placeholder="Package ID"
+            className="w-full p-2 mb-4 border border-gray-300 rounded"
+          />
+          <input
+            type="text"
+            value={moduleId}
+            onChange={(e) => setModuleId(e.target.value)}
+            placeholder="Module ID"
+            className="w-full p-2 mb-4 border-gray-300 rounded"
+          />
+          <input
+            type="text"
+            value={functionId}
+            onChange={(e) => setFunctionId(e.target.value)}
+            placeholder="Function ID"
+            className="w-full p-2 mb-4 border-gray-300 rounded"
+          />
+          <input
+            type="text"
+            value={args}
+            onChange={(e) => setArgs(e.target.value)}
+            placeholder="Args (JSON)"
+            className="w-full p-2 mb-4 border-gray-300 rounded"
+          />
+          <button
+            onClick={handleExecuteTransaction}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Execute Transaction
+          </button>
+        </form>
+     
+          <div className="mt-4">
+            <h2 className="text-lg font-bold">Result:</h2>
+            <pre className="bg-gray-100 p-2 rounded">{JSON.stringify(result, null, 2)}</pre>
+          </div>
+       
+   
+          <div className="mt-4">
+            <h2 className="text-lg font-bold">Error:</h2>
+            <pre className="bg-gray-100 p-2 rounded">{JSON.stringify(error, null, 2)}</pre>
+          </div>
 
-
-        
- <div className="grid grid-cols- md:grid-cols-2 lg:grid-cols-3 gap-4">
- {NFTData?.data.map((nft, index) => (
-            <div key={index} className="card bg-base-100 w-96 shadow-xl text-sm" >            <div className="card-body ">
-                <h1 className="card-title">{nft?.data.objectId}</h1>
-                <p className="text-sm truncateBoth">{nft?.data?.digest}</p>
-                <p className="text-sm">{nft?.data?.version}</p>
-                <NFTDetail objectId={nft.data.objectId} />
-                <div className="card-actions justify-end">
-                  <button className="btn btn">View</button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-        
-         
-      
+      </div>
     </div>
-
   );
 };
 

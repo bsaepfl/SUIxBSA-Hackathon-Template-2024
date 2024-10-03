@@ -2,8 +2,8 @@ import { ConnectButton, useCurrentAccount } from "@mysten/dapp-kit";
 import { isValidSuiObjectId } from "@mysten/sui/utils";
 import { Box, Container, Flex, Heading } from "@radix-ui/themes";
 import { useState } from "react";
-import { Counter } from "../Counter";
-import { CreateCounter } from "../CreateCounter";
+import { Counter } from "../components/CounterComponents/Counter";
+import { CreateCounter } from "../components/CounterComponents/CreateCounter";
 import Navbar from "../components/Navbar";
 
 const Contract = () => {
@@ -18,7 +18,7 @@ const Contract = () => {
       <Navbar/>
 
       <div className="max-w-7xl mx-auto p-4 mt-20">
-      <div className="flex justify-center  h-screen">
+      <div className="flex justify-center">
         {currentAccount ? (
             counterId ? (
               <Counter id={counterId} />
@@ -39,4 +39,4 @@ const Contract = () => {
   );
 }
 
-export default Main;
+export default Contract;

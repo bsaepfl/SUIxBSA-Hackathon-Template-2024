@@ -22,7 +22,7 @@ const Navbar = () => {
             <Link to="/Debug" className="btn btn-base-100 text-lg normal-case hover:scale-110 transition-transform duration-200">Debug</Link>
           </li>
           <li>
-            <Link to="/Test" className="btn btn-base-100 text-lg normal-case hover:scale-110 transition-transform duration-200">NFTs</Link>
+            <Link to="/Contract" className="btn btn-base-100 text-lg normal-case hover:scale-110 transition-transform duration-200">Contract</Link>
           </li>
         </ul>
       </div>
