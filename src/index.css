@@ -87,9 +87,9 @@
   .card:active {
     color: #0d76fc;
     border-color: #0d76fc;
-  }.card-body {
-    color: #fff;
   }
+
+
   
   .card h2 {
     margin: 0 0 1rem 0;

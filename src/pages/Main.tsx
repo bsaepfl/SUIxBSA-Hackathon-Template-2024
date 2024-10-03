@@ -24,8 +24,8 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="bg-base-100 rounded-lg shadow-md p-8 mb-8">
-          <h2 className="text-3xl font-bold mb-4 text-center text-blue-600">Our Mission</h2>
+        <section className=" bg-base-100 rounded-lg shadow-md p-8 mb-8">
+          <h2 className="text-3xl font-bold mb-4 text-center text-blue-600">Made with Heart By Loris</h2>
           <p className="text-center max-w-2xl mx-auto ">
           This starter pack was made by BSA comitee member [Loris](https://github.com/Loris-EPFL), feel free to contact me for any questions, bug reports, etc...
           </p>
@@ -38,7 +38,7 @@ const Home = () => {
             <div className="card bg-base-100 shadow-sm">
               <div className="card-body">
                 <h3 className="card-title text-blue-500">Easy Styling</h3>
-                <p className="">Thanks to tailwind and daisyUI, styling is pretty EZ. Just use the premade daisyUI components or customize them to your liking.</p>
+                <p className="text-black dark:text-gray-300">Thanks to tailwind and daisyUI, styling is pretty EZ. Just use the premade daisyUI components or customize them to your liking.</p>
               </div>
             </div>
             <div className="card bg-base-100 shadow-sm">
