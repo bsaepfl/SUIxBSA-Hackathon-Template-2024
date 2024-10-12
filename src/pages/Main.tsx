@@ -1,10 +1,14 @@
 
 import Navbar from '../components/Navbar';
 import Graphic from '../components/Graphic';
-import Buy from './buy';
+import Buy from '../components/Buy';
 
 
 const Home = () => {
+
+  const data = [10, 20, 30, 40, 50, 60, 70];
+  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+
   return (
    
     <div className="flex justify-center items-center bg-base-200 " >
@@ -18,7 +22,8 @@ const Home = () => {
             <div className="max-w-md">
               <h1 className="text-5xl font-bold mb-4 text-blue-600"></h1>
               <p className="mb-6 ">
-                <Graphic />
+                <Graphic data={data} labels={labels} />
+                <Buy cote={1}/> 
 
               </p>
               
@@ -41,6 +46,8 @@ const Home = () => {
             </div>
           </div>
         </section>
+
+        
 
         <section className=" bg-base-100 rounded-lg shadow-md p-8 mb-8">
           <h2 className="text-3xl font-bold mb-4 text-center text-blue-600">Made with Heart By Loris</h2>
