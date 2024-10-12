@@ -5,10 +5,9 @@ import Bottom from '../components/Bottom';
 import Countdown from '../components/Coundown';
 
 
-const Home = () => {
+const Landing = () => {
 
-  const data = [10, 20, 30, 40, 50, 60, 70, 80, 90];
-  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September'];
+
 
   return (
    
@@ -19,10 +18,9 @@ const Home = () => {
 
       <main className="container mx-auto px-4 mt-20">
         <section className="hero bg-base-100 rounded-lg shadow-md mb-8 flex flex-col">
-          <div className="max-w-md">
-            <Countdown initialSeconds={10}/>
-            <Graphic data={data} labels={labels} />
-            <Bottom />
+            <h1 className="text-4xl font-bold text-center">Welcome to Bet For Dummies</h1>
+            <div className="max-w-md">
+            
               
           </div>
          
@@ -34,4 +32,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Landing;

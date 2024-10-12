@@ -13,7 +13,7 @@ import {
   ChartData,
 } from 'chart.js'; 
 
-// Register the necessary Chart.js components
+// Register necessary components from Chart.js
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 // Define the types for the props
@@ -28,7 +28,7 @@ const Graphic: React.FC<GraphicProps> = ({ data, labels }) => {
     labels: labels,  // X-axis labels provided via props
     datasets: [
       {
-        label: '',  // You can change this label as per your need
+        label: 'Sui Value',  // You can change this label as per your need
         data: data,  // Data provided via props
         borderColor: 'rgba(75, 192, 192, 1)',  // Line color
         backgroundColor: 'rgba(75, 192, 192, 0.2)',  // Background color of the chart area
@@ -40,15 +40,16 @@ const Graphic: React.FC<GraphicProps> = ({ data, labels }) => {
 
   // Define chart options for customization
   const chartOptions: ChartOptions<'line'> = {
-    responsive: true,
+    responsive: true,  // Makes the chart responsive
+    maintainAspectRatio: false,  // Allow chart to resize freely
     plugins: {
       legend: {
         display: true,
-        position: 'top',  // Legend will be displayed on top
+        position: 'top',  // Legend displayed on top
       },
       title: {
         display: true,
-        text: 'Sui Value',  // Chart title
+        text: 'Sui Value Chart',  // Chart title
       },
     },
     scales: {
@@ -69,9 +70,9 @@ const Graphic: React.FC<GraphicProps> = ({ data, labels }) => {
   };
 
   return (
-    <div className="flex justify-center items-center h-full w-full">
-      <div className="w-max"> {/* Adjust the width and height here */}
-        <Line data={chartData} options={chartOptions} className="size-full" />
+    <div className="flex justify-center items-center w-full h-[500px]"> {/* Full width and height */}
+      <div className="w-full h-full">
+        <Line data={chartData} options={chartOptions} />
       </div>
     </div>
   );

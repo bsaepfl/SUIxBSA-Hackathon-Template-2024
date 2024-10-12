@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Result from "./Result";
 
 const Countdown = ({ initialSeconds = 60 }) => {
   const [seconds, setSeconds] = useState(initialSeconds);
@@ -18,12 +19,15 @@ const Countdown = ({ initialSeconds = 60 }) => {
   }, [seconds]);
 
   return (
-    <div className="text-center bg-gray-200 p-4 rounded-md w-48 mx-auto">
+    <div className="text-center bg-transparent p-4 rounded-md w-48 mx-auto">
       {!isTimeUp && <h1 className="text-2xl font-bold text-blue-500">
         {seconds}s
       </h1>}
       {isTimeUp && (
-        <p className="text-red-500 font-bold mt-2 background background-red">Time's up!</p>
+        <div className="justify-center bg transparent">
+            <p className="text-red-500 font-bold pb-2">Time's up!</p>
+            <Result />
+        </div>
       )}
     </div>
   );

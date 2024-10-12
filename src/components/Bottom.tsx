@@ -5,9 +5,8 @@ const Bottom = () => {
     
   
     return (
-      <div className="flex flex-row">
+      <div className="flex flex-row gap-4">
         <PlayersState/>
-        <Result/>
         <PlayersState/> 
       </div>
     );
