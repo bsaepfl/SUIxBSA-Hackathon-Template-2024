@@ -1,7 +1,4 @@
 import Navbar from '../components/Navbar';
-import Graphic from '../components/Graphic';
-import Bottom from '../components/Bottom';
-import Countdown from '../components/Coundown';
 import { Link } from 'react-router-dom';
 
 const Landing = () => {
@@ -16,7 +13,7 @@ const Landing = () => {
               <h1 className="text-6xl font-bold mb-6 text-blue-600">Bet for Dummies</h1>
               
               <p className="text-lg mb-8 text-gray-600 max-w-md mx-auto">
-                Welcome to Bet For Dummies! Join a game to bet on the evolution of the price of SUI. Put 10 SUI in the pot, and for each round without a winner or a loser, the pot increments by 1. Once there is a round with a winner and a loser, the winner takes all the money!
+                Welcome to Bet For Dummies! Join a game to bet on the evolution of the price of SUI. Put 10 SUI in the pot, and for each round without a winner or a loser, the pot increments by 1. Once there is a round with a winner and a loser, the winner takes all the money! Careful ! If you do not enter a bet before the time limit, you automatically lose the game.
               </p>
 
               <Link to="/" className="btn btn-primary bg-blue-500 hover:bg-blue-600 py-4 px-4 text-lg rounded-lg mb-10">
