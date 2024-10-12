@@ -1,4 +1,5 @@
 module User {
+    use std::string;
     
     struct User has key, store {
         id: u64,
@@ -9,14 +10,14 @@ module User {
     public entry fun create_user (
         account: &signer,
         id: u64,
-        username: String,
+        username: string::String,
         initial_balance: u64
      ) {
         let new_user = User {
             id,
             username,
-            balanace: initial_balance
-        }
+            balance: initial_balance,
+        };
 
         move_to(account, new_user);
     };
