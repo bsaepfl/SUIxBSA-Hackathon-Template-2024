@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 const Result = () => {
     
-    const [p1W, setp1W] = useState(false);
+    const [p1W, setp1W] = useState(true);
     const [p2W, setp2W] = useState(false);
     const [eq, setEq] = useState(false);
 
@@ -23,15 +23,16 @@ const Result = () => {
         if(!eq && !p1W && !p2W){
             setEq(true);
         }
+    }
 
     return (
       <div className="">
-        {p1W && <p>Player 1 Wins!</p>}
-        {p2W && <p>Player 2 Wins!</p>}
-        {eq && <p>It's a tie!</p>}
+        {p1W && <p className="text-green-400">Player 1 Wins!</p>}
+        {p2W && <p className="text-green-400">Player 2 Wins!</p>}
+        {eq && <p className="text-gray-400">It's a tie!</p>}
       </div>
     );
-  };
+    
   
+};
   export default Result;
-  
