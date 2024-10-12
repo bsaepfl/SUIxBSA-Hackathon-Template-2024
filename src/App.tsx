@@ -10,12 +10,18 @@ import NFT from './pages/NFT';
 import Debug from './pages/Debug';
 import Contract from './pages/Contract';
 
+
+
+
 function App() {
   const currentAccount = useCurrentAccount();
   const [counterId, setCounter] = useState(() => {
     const hash = window.location.hash.slice(1);
     return isValidSuiObjectId(hash) ? hash : null;
   });
+
+
+
 
   return (
     <BrowserRouter>
