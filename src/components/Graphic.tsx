@@ -70,7 +70,7 @@ const Graphic: React.FC<GraphicProps> = ({ data, labels }) => {
 
   return (
     <div className="flex justify-center items-center h-full w-full">
-      <div className="w-"> {/* Adjust the width and height here */}
+      <div className="w-max"> {/* Adjust the width and height here */}
         <Line data={chartData} options={chartOptions} className="size-full" />
       </div>
     </div>
