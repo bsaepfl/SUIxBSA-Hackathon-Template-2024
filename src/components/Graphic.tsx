@@ -28,7 +28,7 @@ const Graphic: React.FC<GraphicProps> = ({ data, labels }) => {
     labels: labels,  // X-axis labels provided via props
     datasets: [
       {
-        label: 'Sample Data',  // You can change this label as per your need
+        label: '',  // You can change this label as per your need
         data: data,  // Data provided via props
         borderColor: 'rgba(75, 192, 192, 1)',  // Line color
         backgroundColor: 'rgba(75, 192, 192, 0.2)',  // Background color of the chart area
@@ -48,7 +48,7 @@ const Graphic: React.FC<GraphicProps> = ({ data, labels }) => {
       },
       title: {
         display: true,
-        text: 'Dynamic Data Chart',  // Chart title
+        text: 'Sui Value',  // Chart title
       },
     },
     scales: {
@@ -68,7 +68,13 @@ const Graphic: React.FC<GraphicProps> = ({ data, labels }) => {
     },
   };
 
-  return <Line data={chartData} options={chartOptions} />;
+  return (
+    <div className="flex justify-center items-center h-full w-full">
+      <div className="w-[80%] h-[500px] md:w-[70%] lg:w-[60%]"> {/* Adjust the width and height here */}
+        <Line data={chartData} options={chartOptions} className="size-full" />
+      </div>
+    </div>
+  );
 };
 
 export default Graphic;

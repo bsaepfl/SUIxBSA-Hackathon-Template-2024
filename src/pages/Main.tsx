@@ -1,7 +1,7 @@
 
 import Navbar from '../components/Navbar';
 import Graphic from '../components/Graphic';
-import Buy from '../components/Buy';
+import Bottom from '../components/Bottom';
 
 
 const Home = () => {
@@ -21,11 +21,8 @@ const Home = () => {
           <div className="hero-content text-center  py-12">
             <div className="max-w-md">
               <h1 className="text-5xl font-bold mb-4 text-blue-600"></h1>
-              <p className="mb-6 ">
-                <Graphic data={data} labels={labels} />
-                <Buy cote={1}/> 
-
-              </p>
+              <Graphic data={data} labels={labels} />
+              <Bottom />
               
             </div>
           </div>

@@ -1,15 +1,19 @@
 import React from 'react';
 
 type BuyProps = {
-  cote: number;
+  onClick: () => void; // Specify the type for onClick
 };
 
-const Buy: React.FC<BuyProps> = ({ cote }) => {
+const Buy: React.FC<BuyProps> = ({ onClick }) => {
   return (
-    <button className="btn btn-primary bg-blue-500 hover:bg-blue-600">
-      La cote est a {cote}
+    <button
+      onClick={onClick}
+      className="btn btn-primary bg-green-500 hover:bg-green-600 text-white p-4 rounded-lg" // Green color classes
+    >
+      Up
     </button>
   );
 };
 
 export default Buy;
+
