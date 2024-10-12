@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Sell from "./Sell";
 import Buy from "./Buy";
+
 // Define the props type
 interface PlayersStateProps {
   isTimeUp: boolean;
@@ -26,7 +27,15 @@ const PlayersState: React.FC<PlayersStateProps> = ({ isTimeUp, isTimeShort }) =>
   };
 
   return (
-    <div className={`flex flex-col items-center justify-center w-64 h-32 border border-gray-300 rounded-lg shadow-lg p-8 ${buyClicked ? 'bg-green-200' : sellClicked ? 'bg-red-200' : 'bg-transparent'}`}>
+    <div
+      className={`flex flex-col items-center justify-center w-64 h-32 border rounded-lg shadow-lg p-8 ${
+        buyClicked
+          ? "bg-green-200"
+          : sellClicked
+          ? "bg-red-200"
+          : "bg-transparent"
+      } ${blinking ? "animate-blink-border" : "border-gray-300"}`}
+    >
       <div className="flex space-x-4 p-4"> {/* Flex container for horizontal alignment */}
         <Buy onClick={handleBuyClick}/>
         <Sell onClick={handleSellClick} />
