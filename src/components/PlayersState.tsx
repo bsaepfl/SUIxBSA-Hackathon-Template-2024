@@ -9,14 +9,33 @@ const PlayersState = () => {
   const handleBuyClick = () => {
     if(!buyClicked && !sellClicked){
         setBuyClicked(true);}
+        return (
+
+            <div className="flex flex-col items-center justify-center w-64 h-64 bg-green-200 border border-gray-300 rounded-lg shadow-lg p-4">
+              <div className="mt-4">
+                {buyClicked && <p>You clicked Up!</p>}
+                
+              </div>
+            </div>
+          );
   };
 
   const handleSellClick = () => {
     if(!sellClicked && !buyClicked){
         setSellClicked(true);}
+        return(
+            <div className="flex flex-col items-center justify-center w-64 h-64 bg-red-200 border border-gray-300 rounded-lg shadow-lg p-4">
+                <div className="mt-4">
+                {sellClicked && <p>You clicked Down!</p>}
+                    
+                    </div>
+                </div>
+            );
   };
 
+
   return (
+
     <div className="flex flex-col items-center justify-center w-64 h-64 bg-white-200 border border-gray-300 rounded-lg shadow-lg p-4">
       <div className="flex space-x-4"> {/* Flex container for horizontal alignment */}
         <Buy onClick={handleBuyClick} />

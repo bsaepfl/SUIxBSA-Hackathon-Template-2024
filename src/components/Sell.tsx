@@ -8,7 +8,7 @@ const Sell: React.FC<SellProps> = ({ onClick }) => {
   return (
     <button
       onClick={onClick}
-      className="btn btn-primary bg-red-300 hover:bg-red-600 text-white p-4 rounded-lg" // Red color classes
+      className="btn btn-s bg-red-300 hover:bg-red-600 text-white p-4 rounded-lg" // Red color classes
     >
       Down
     </button>

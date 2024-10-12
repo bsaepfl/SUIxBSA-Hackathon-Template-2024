@@ -26,7 +26,7 @@ const Result = () => {
     }
 
     return (
-      <div className="">
+      <div className="w-64">
         {p1W && <p className="text-green-400">Player 1 Wins!</p>}
         {p2W && <p className="text-green-400">Player 2 Wins!</p>}
         {eq && <p className="text-gray-400">It's a tie!</p>}
