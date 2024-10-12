@@ -9,8 +9,10 @@ const Home = () => {
   const data = [10, 20, 30, 40, 50, 60, 70, 80, 90];
   const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September'];
 
+
   const [seconds, setSeconds] = useState(10);
   const [isTimeUp, setIsTimeUp] = useState(false);
+  const [isTimeShort, setIsTimeShort] = useState(false);
 
   useEffect(() => {
     const countdown = setInterval(() => {
@@ -19,6 +21,9 @@ const Home = () => {
       } else {
         clearInterval(countdown);
         setIsTimeUp(true); // Set the boolean to true when time is up
+      }
+      if (seconds < 5) {
+        setIsTimeShort(true);
       }
     }, 1000);
 
@@ -42,9 +47,7 @@ const Home = () => {
               )}
             </div>
             <Graphic data={data} labels={labels} />
-
-            {/* Pass isTimeUp as a prop to Bottom */}
-            <Bottom isTimeUp={isTimeUp} />
+            <Bottom isTimeUp={isTimeUp} isTimeShort={isTimeShort} />
           </div>
         </section>
       </main>

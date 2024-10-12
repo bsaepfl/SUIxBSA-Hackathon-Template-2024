@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import Sell from "./Sell";
 import Buy from "./Buy";
-
 // Define the props type
 interface PlayersStateProps {
   isTimeUp: boolean;
+  isTimeShort: boolean;
 }
 
-const PlayersState: React.FC<PlayersStateProps> = ({ isTimeUp }) => {
+const PlayersState: React.FC<PlayersStateProps> = ({ isTimeUp, isTimeShort }) => {
   const [buyClicked, setBuyClicked] = useState(false);
   const [sellClicked, setSellClicked] = useState(false);
+
+  const blinking = isTimeShort && !(buyClicked || sellClicked);
 
   const handleBuyClick = () => {
     if (!isTimeUp && !buyClicked && !sellClicked) {
@@ -29,9 +31,10 @@ const PlayersState: React.FC<PlayersStateProps> = ({ isTimeUp }) => {
         <Buy onClick={handleBuyClick}/>
         <Sell onClick={handleSellClick} />
       </div>
-      <div className="mt-4">
+      <div className="mt-4 flex flex-row">
         {buyClicked && <p>You clicked Up!</p>}
         {sellClicked && <p>You clicked Down!</p>}
+        {blinking && <p className="animate-pulse text-red-500">Hurry up!</p>}
       </div>
     </div>
   );
