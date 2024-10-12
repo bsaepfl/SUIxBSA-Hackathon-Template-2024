@@ -1,7 +1,6 @@
 module User {
+    use std::string;
     
-    use std::vector;
-
     struct User has key, store {
         id: u64,
         username: String,
@@ -11,15 +10,24 @@ module User {
     public entry fun create_user (
         account: &signer,
         id: u64,
-        username: String,
+        username: string::String,
         initial_balance: u64
      ) {
         let new_user = User {
             id,
             username,
-            balanace: initial_balance
-        }
+            balance: initial_balance,
+        };
+
+        move_to(account, new_user);
+    };
+
+    public fun get_balance(user: &User): u64 {
+        user.balance
     }
 
-    
+    public entry fun add_funds(user: &mut User, amount: u64) {
+        user.balance = user.balance + amount;
+    }
+
 }
