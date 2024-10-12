@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../src/features/suiReportTransactionEffects.ts"],
+  "sourcesContent": ["// Copyright (c) Mysten Labs, Inc.\n// SPDX-License-Identifier: Apache-2.0\n\nimport type { IdentifierString, WalletAccount } from '@wallet-standard/core';\n\n/**\n * A Wallet Standard feature for reporting the effects of a transaction block executed by a dapp\n * The feature allows wallets to updated their caches using the effects of the transaction\n * executed outside of the wallet\n */\nexport type SuiReportTransactionEffectsFeature = {\n\t/** Namespace for the feature. */\n\t'sui:reportTransactionEffects': {\n\t\t/** Version of the feature API. */\n\t\tversion: '1.0.0';\n\t\treportTransactionEffects: SuiReportTransactionEffectsMethod;\n\t};\n};\n\nexport type SuiReportTransactionEffectsMethod = (\n\tinput: SuiReportTransactionEffectsInput,\n) => Promise<void>;\n\n/** Input for signing transactions. */\nexport interface SuiReportTransactionEffectsInput {\n\taccount: WalletAccount;\n\tchain: IdentifierString;\n\t/** Transaction effects as base64 encoded bcs. */\n\teffects: string;\n}\n"],
+  "mappings": ";;;;;;;;;;;;;;AAAA;AAAA;",
+  "names": []
+}

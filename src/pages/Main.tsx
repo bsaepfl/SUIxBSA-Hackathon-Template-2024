@@ -1,5 +1,7 @@
 
 import Navbar from '../components/Navbar';
+import Graphic from '../components/Graphic';
+import Buy from './buy';
 
 
 const Home = () => {
@@ -11,15 +13,31 @@ const Home = () => {
       <Navbar />
 
       <main className="container mx-auto px-4 mt-20">
-        <section className="hero bg-base-100 rounded-lg shadow-md mb-8">
+        <section className="hero bg-base-100 rounded-lg shadow-md mb-8 flex flex-col">
           <div className="hero-content text-center  py-12">
             <div className="max-w-md">
-              <h1 className="text-5xl font-bold mb-4 text-blue-600">The SUI x BSA Template</h1>
+              <h1 className="text-5xl font-bold mb-4 text-blue-600"></h1>
               <p className="mb-6 ">
-              Welcome to the [BSA](https://bsaepfl.ch/) x [SUI](https://sui.io/) Hackathon Official Starter Pack ! This kit should provide you with tons of tools to make your hackathon experience seamless and easy, so ou can focus on what you do best ! 
+                <Graphic />
 
               </p>
-              <button className="btn btn-primary bg-blue-500 hover:bg-blue-600">Start Building</button>
+              
+            </div>
+          </div>
+
+          <div className="gap-4 block w-full flex justify-center">
+            <div className="card bg-base-100 shadow-sm">
+              <div className="card-body">
+                <h3 className="card-title text-blue-500">Sui goes up</h3>
+                <p className="">The NFT component fetches all the objects of your wallet and display them to you if available ! Feel free to modify it to your liking</p>
+              </div>
+            </div>
+            <div className="card bg-base-100 shadow-sm">
+              <div className="card-body">
+                <h3 className="card-title text-blue-500">Sui goes down</h3>
+                <p className="">No Wallet ? No problem ! Just connect your google account and we'll generate a wallet address just for you !
+                </p>
+              </div>
             </div>
           </div>
         </section>
