@@ -3,11 +3,11 @@ import Sell from "./Sell";
 import Buy from "./Buy";
 
 // Define the props type
-interface PlayersStateProps {
+interface OpponentStateProps {
   isTimeUp: boolean;
 }
 
-const PlayersState: React.FC<PlayersStateProps> = ({ isTimeUp }) => {
+const OpponentState: React.FC<OpponentStateProps> = ({ isTimeUp }) => {
   const [buyClicked, setBuyClicked] = useState(false);
   const [sellClicked, setSellClicked] = useState(false);
 
@@ -25,9 +25,9 @@ const PlayersState: React.FC<PlayersStateProps> = ({ isTimeUp }) => {
 
   return (
     <div className={`flex flex-col items-center justify-center w-64 h-32 border border-gray-300 rounded-lg shadow-lg p-8 ${buyClicked ? 'bg-green-200' : sellClicked ? 'bg-red-200' : 'bg-transparent'}`}>
-      <div className="flex space-x-4 p-4"> {/* Flex container for horizontal alignment */}
-        <Buy onClick={handleBuyClick}/>
-        <Sell onClick={handleSellClick} />
+      <div className="flex space-x-4 p-4">
+        <Buy onClick={handleBuyClick}  />
+        <Sell onClick={handleSellClick}  />
       </div>
       <div className="mt-4">
         {buyClicked && <p>You clicked Up!</p>}
@@ -37,4 +37,4 @@ const PlayersState: React.FC<PlayersStateProps> = ({ isTimeUp }) => {
   );
 };
 
-export default PlayersState;
+export default OpponentState;

@@ -1,16 +1,21 @@
 import React from "react";
 import PlayersState from "./PlayersState";
-import Result from "./Result";
-const Bottom = () => {
+import OpponentState from "./OpponentState";
+
+// Define the prop types
+interface BottomProps {
+  isTimeUp: boolean;
+}
+
+const Bottom: React.FC<BottomProps> = ({ isTimeUp }) => {
+  return (
+    <div className="flex flex-row gap-4">
+      <PlayersState isTimeUp={isTimeUp} />
+      <OpponentState isTimeUp={isTimeUp} />
+
     
-  
-    return (
-      <div className="flex flex-row gap-4">
-        <PlayersState/>
-        <PlayersState/> 
-      </div>
-    );
-  };
-  
-  export default Bottom;
-  
+    </div>
+  );
+};
+
+export default Bottom;

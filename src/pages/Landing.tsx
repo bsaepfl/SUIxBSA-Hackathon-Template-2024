@@ -19,7 +19,7 @@ const Landing = () => {
                 Welcome to Bet For Dummies! Join a game to bet on the evolution of the price of SUI. Put 10 SUI in the pot, and for each round without a winner or a loser, the pot increments by 1. Once there is a round with a winner and a loser, the winner takes all the money!
               </p>
 
-              <Link to="/" className="btn btn-primary bg-blue-500 hover:bg-blue-600 py-4 px-8 text-lg rounded-lg mb-10">
+              <Link to="/" className="btn btn-primary bg-blue-500 hover:bg-blue-600 py-4 px-4 text-lg rounded-lg mb-10">
                 Play Now
               </Link>
             </div>
