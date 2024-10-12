@@ -7,22 +7,24 @@ const PlayersState = () => {
   const [sellClicked, setSellClicked] = useState(false);
 
   const handleBuyClick = () => {
-    setBuyClicked(true);
+    if(!buyClicked && !sellClicked){
+        setBuyClicked(true);}
   };
 
   const handleSellClick = () => {
-    setSellClicked(true);
+    if(!sellClicked && !buyClicked){
+        setSellClicked(true);}
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-64 h-64 bg-gray-200 border border-gray-300 rounded-lg shadow-lg p-4">
+    <div className="flex flex-col items-center justify-center w-64 h-64 bg-white-200 border border-gray-300 rounded-lg shadow-lg p-4">
       <div className="flex space-x-4"> {/* Flex container for horizontal alignment */}
         <Buy onClick={handleBuyClick} />
         <Sell onClick={handleSellClick} />
       </div>
       <div className="mt-4">
-        {buyClicked && <p>You clicked Buy!</p>}
-        {sellClicked && <p>You clicked Sell!</p>}
+        {buyClicked && <p>You clicked Up!</p>}
+        {sellClicked && <p>You clicked Down!</p>}
       </div>
     </div>
   );

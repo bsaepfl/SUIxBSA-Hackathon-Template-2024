@@ -8,7 +8,7 @@ const Buy: React.FC<BuyProps> = ({ onClick }) => {
   return (
     <button
       onClick={onClick}
-      className="btn btn-primary bg-green-500 hover:bg-green-600 text-white p-4 rounded-lg" // Green color classes
+      className="btn btn-primary bg-lime-200 hover:bg-green-600 text-white p-4 rounded-lg" // Green color classes
     >
       Up
     </button>
