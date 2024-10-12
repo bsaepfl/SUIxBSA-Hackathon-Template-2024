@@ -9,6 +9,7 @@ import Main from './pages/Main';
 import NFT from './pages/NFT';
 import Debug from './pages/Debug';
 import Contract from './pages/Contract';
+import Landing from './pages/Landing';
 
 
 
@@ -27,6 +28,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/Landing" element={<Landing />} />
         <Route path="/NFT" element={<NFT />} />
         <Route path="/Debug" element={<Debug />} />
         <Route path="/Contract" element={<Contract />} />

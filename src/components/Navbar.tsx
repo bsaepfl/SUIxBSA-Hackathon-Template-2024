@@ -10,8 +10,23 @@ const Navbar = () => {
           Bet For Dummies
         </Link>
       </div>
+      <li>
+            <Link to="/Landing" className="btn btn-base-100 text-lg normal-case hover:scale-110 transition-transform duration-200">Home</Link>
+      </li>
+      
+
+
+
+
+
+
+
+
+
+      
       {/* <div className="navbar-center">
         <ul className="menu menu-horizontal px-1 space-x-2">
+        
           <li>
             <Link to="/" className="btn btn-base-100 text-lg normal-case hover:scale-110 transition-transform duration-200">Home</Link>
           </li>
