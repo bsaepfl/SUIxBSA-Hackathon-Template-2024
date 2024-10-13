@@ -28,7 +28,7 @@ const PlayersState: React.FC<PlayersStateProps> = ({ isTimeUp, isTimeShort }) =>
 
   return (
     <div
-      className={`flex flex-col items-center justify-center w-64 h-32 border rounded-lg shadow-lg p-8 ${
+      className={`flex flex-col items-center justify-center w-64 h-20 border rounded-lg shadow-lg p-8 ${
         buyClicked
           ? "bg-green-200"
           : sellClicked
@@ -40,11 +40,11 @@ const PlayersState: React.FC<PlayersStateProps> = ({ isTimeUp, isTimeShort }) =>
         <Buy onClick={handleBuyClick}/>
         <Sell onClick={handleSellClick} />
       </div>
-      <div className="mt-4 flex flex-row">
+      {/* <div className="mt-4 flex flex-row">
         {buyClicked && <p>You clicked Up!</p>}
         {sellClicked && <p>You clicked Down!</p>}
         {blinking && !isTimeUp && <p className="animate-pulse text-red-500">Hurry up!</p>}
-      </div>
+      </div> */}
     </div>
   );
 };

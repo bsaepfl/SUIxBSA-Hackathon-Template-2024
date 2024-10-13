@@ -136,18 +136,16 @@ const useStockPrices = () => {
 
 const StockPriceDisplay = () => {
   const currentPrices = useStockPrices(); // Use the custom hook to get current prices
+  const lastPrice = currentPrices[currentPrices.length - 1]; // Get the last value from the array
 
   return (
     <div>
-      <h1>Current Stock Prices</h1>
-      <ul>
-        {currentPrices.map((price, index) => (
-          <li key={index}>{price.toFixed(3)}</li>
-        ))}
-      </ul>
+      <h1>Current Stock Price</h1>
+      <p>{lastPrice ? lastPrice.toFixed(3) : 'No data available'}</p> {/* Display last price or fallback message */}
     </div>
   );
 };
+
 
 // Main component to render both chart and stock price display
 const App: React.FC = () => {
