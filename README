@@ -1,0 +1,47 @@
+# Web3 Project: Up and Down Game
+
+## Description
+**Up and Down** is a decentralized game built on the [Sui Blockchain](https://sui.io/). Players bet on the evolution of the price of SUI. Each game round involves players placing a bet of 10 SUI. For every round where there’s no clear winner or loser, the pot increases by 1 SUI. The game continues until a winner and a loser are determined, and the winner takes the entire pot. If a player fails to make a move before the time limit, they lose the game automatically.
+
+This project aims to showcase the power of Web3 by providing a fair and transparent betting experience using smart contracts. It ensures that every transaction is recorded on the blockchain, making it secure and verifiable.
+
+## Features
+- **Decentralized Gameplay**: All game interactions are executed through smart contracts, ensuring transparency.
+- **Real-Time Price Tracking**: Uses live SUI price data to determine winning and losing outcomes.
+- **Secure Wallet Integration**: Supports wallet connections through [Mysten Wallet Kit](https://github.com/mysten/wallet-kit).
+- **Automated Betting Process**: Automatic updates and transactions via smart contracts, eliminating intermediaries.
+
+## Prerequisites
+Before setting up the project, ensure that you have the following installed:
+- [Node.js](https://nodejs.org/) (v14+)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- A Sui-compatible wallet (e.g., [Sui Wallet](https://sui.io/wallet))
+
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/GuillaumeLepin/BetForDummies.git
+   cd up-and-down-game
+
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Contact
+
+For any questions or suggestions, feel free to reach out:
+
+Jakub 
+GitHub: Jakub-Kliment
+Project Website: currently localy hosted
+
+## Acknowledgments
+
+Sui Blockchain and Foundation - For the blockchain network and support.
+Mysten Wallet Kit - For seamless wallet integration.
+React - For building the front-end.
+Special thanks to all the beta testers who provided valuable feedback during development.
+Henri - for his very large knowledge
+Alexis - for being the best staff out there
+Staff - for being very helpful in every time
