@@ -55,13 +55,13 @@ const Graphic: React.FC<GraphicProps> = ({ data, labels}) => {
       x: {
         title: {
           display: true,
-          text: 'Labels (X-Axis)',  // X-axis title
+          text: 'Time elpsed',  // X-axis title
         },
       },
       y: {
         title: {
           display: true,
-          text: 'Values (Y-Axis)',  // Y-axis title
+          text: 'Sui value',  // Y-axis title
         },
         beginAtZero: false,  // Y-axis starts at zero
       },
@@ -126,7 +126,7 @@ const useStockPrices = () => {
           return newValues;
         });
       }
-    }, 1000); // Update every second
+    }, 2000); // Update every second
 
     return () => clearInterval(intervalId); // Cleanup interval on component unmount
   }, [currentIndex]); // Depend on currentIndex
@@ -150,7 +150,8 @@ const StockPriceDisplay = () => {
 // Main component to render both chart and stock price display
 const App: React.FC = () => {
   const currentPrices = useStockPrices(); // Call the hook here to get the current prices
-  const labels = Array.from({length: currentPrices.length }, (_, i) => 'Time ${i + 1}');
+  const labels = [-9, -8, -7, -6, -5, -4, -3, -2, -1]; // Labels for the chart
+  // const labels = Array.from({length: currentPrices.length }, (_, i) => 'Time ${i + 1}');
 
   return (
     <div>
