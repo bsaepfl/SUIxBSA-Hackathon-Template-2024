@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Bar } from 'react-chartjs-2'; 
+import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
-  BarElement,
+  PointElement,
+  LineElement,
   Title,
   Tooltip,
   Legend,
@@ -12,7 +13,7 @@ import {
   ChartData,
 } from 'chart.js';
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend); // Register BarElement
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 // Define the types for the props
 interface GraphicProps {
@@ -21,45 +22,46 @@ interface GraphicProps {
 }
 
 const Graphic: React.FC<GraphicProps> = ({ data, labels }) => {
-  
-  const chartData: ChartData<'bar'> = { 
-    labels: labels,  
+  // Define the chart data structure
+  const chartData: ChartData<'line'> = {
+    labels: labels,  // X-axis labels provided via props
     datasets: [
       {
-        label: 'Sui Value', 
-        data: data, 
-        backgroundColor: 'rgba(75, 192, 192, 0.5)',  
-        borderColor: 'rgba(75, 192, 192, 1)', 
-        borderWidth: 1,
+        label: 'Sui Value',  // You can change this label as per your need
+        data: data,  // Data provided via props
+        borderColor: 'rgba(75, 192, 192, 1)',  // Line color
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',  // Background color of the chart area
+        borderWidth: 2,
+        tension: 0.2,  // Creates smooth curves in the line
       },
     ],
   };
 
   // Define chart options for customization
-  const chartOptions: ChartOptions<'bar'> = {
+  const chartOptions: ChartOptions<'line'> = {
     responsive: true,  // Makes the chart responsive
     maintainAspectRatio: false,  // Allow chart to resize freely
     plugins: {
       legend: {
         display: true,
-        position: 'top',
+        position: 'top',  // Legend displayed on top
       },
       title: {
         display: true,
-        text: 'Sui Value Chart',
+        text: 'Sui Value Chart',  // Chart title
       },
     },
     scales: {
       x: {
         title: {
           display: true,
-          text: '',  // X-axis title
+          text: 'Labels (X-Axis)',  // X-axis title
         },
       },
       y: {
         title: {
           display: true,
-          text: '',  // Y-axis title
+          text: 'Values (Y-Axis)',  // Y-axis title
         },
         beginAtZero: false,  // Y-axis starts at zero
       },
@@ -67,14 +69,15 @@ const Graphic: React.FC<GraphicProps> = ({ data, labels }) => {
   };
 
   return (
-    <div className="flex justify-center items-center w-full h-[500px]"> {}
+    <div className="flex justify-center items-center w-full h-[500px]"> {/* Full width and height */}
       <div className="w-full h-full">
-        <Bar data={chartData} options={chartOptions} /> {}
+        <Line data={chartData} options={chartOptions} />
       </div>
     </div>
   );
 };
 
+// Custom hook to manage stock prices
 const useStockPrices = () => {
   const StockPrices = [
     2.28, 2.291, 2.27, 2.261, 2.279, 2.286, 2.27, 2.265, 2.279, 
@@ -111,35 +114,34 @@ const useStockPrices = () => {
     2.268, 2.257, 2.277, 2.286, 2.268, 2.261, 2.277, 2.282, 2.268,
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(20); 
-  const [currentValues, setCurrentValues] = useState(StockPrices.slice(0, currentIndex)); 
+  const [currentIndex, setCurrentIndex] = useState(11); // Start from the 12th index
+  const [currentValues, setCurrentValues] = useState(StockPrices.slice(0, 11)); // Initial values
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       if (currentIndex < StockPrices.length) {
         setCurrentValues((prevValues) => {
           const newValues = [...prevValues.slice(1), StockPrices[currentIndex]];
-          setCurrentIndex((prevIndex) => prevIndex + 1);
+          setCurrentIndex((prevIndex) => prevIndex + 1); // Move to the next index
           return newValues;
         });
       }
-    }, 2000); 
+    }, 1000); // Update every second
 
     return () => clearInterval(intervalId); // Cleanup interval on component unmount
-  }, [currentIndex]);
+  }, [currentIndex]); // Depend on currentIndex
 
   return currentValues; // Return the current stock prices
 };
 
 const StockPriceDisplay = () => {
-  const currentPrices = useStockPrices();
-  const lastThreePrices = currentPrices.slice(-1);
+  const currentPrices = useStockPrices(); // Use the custom hook to get current prices
 
   return (
     <div>
       <h1>Current Stock Prices</h1>
       <ul>
-        {lastThreePrices.map((price, index) => (
+        {currentPrices.map((price, index) => (
           <li key={index}>{price.toFixed(3)}</li>
         ))}
       </ul>
@@ -150,7 +152,7 @@ const StockPriceDisplay = () => {
 // Main component to render both chart and stock price display
 const App: React.FC = () => {
   const currentPrices = useStockPrices(); // Call the hook here to get the current prices
-  const labels = Array.from({ length: currentPrices.length }, (_, i) => `Time ${i + 1}`);
+  const labels = Array.from({ length: currentPrices.length }, (_, i) => 'Time ${i + 1}');
 
   return (
     <div>
