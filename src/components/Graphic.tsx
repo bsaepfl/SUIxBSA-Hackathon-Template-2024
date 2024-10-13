@@ -21,7 +21,7 @@ interface GraphicProps {
   labels: string[];    // Array of strings for the x-axis labels (e.g., months or time)
 }
 
-const Graphic: React.FC<GraphicProps> = ({ data, labels }) => {
+const Graphic: React.FC<GraphicProps> = ({ data, labels}) => {
   // Define the chart data structure
   const chartData: ChartData<'line'> = {
     labels: labels,  // X-axis labels provided via props
@@ -152,7 +152,7 @@ const StockPriceDisplay = () => {
 // Main component to render both chart and stock price display
 const App: React.FC = () => {
   const currentPrices = useStockPrices(); // Call the hook here to get the current prices
-  const labels = Array.from({ length: currentPrices.length }, (_, i) => 'Time ${i + 1}');
+  const labels = Array.from({length: currentPrices.length }, (_, i) => 'Time ${i + 1}');
 
   return (
     <div>

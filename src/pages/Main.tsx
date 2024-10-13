@@ -60,7 +60,7 @@ const Home = () => {
                 </div>
               )}
             </div>
-            <Graphic data={data} labels={labels} />
+            <Graphic data={data} labels={labels} isTimeUp={isTimeUp} />
             <Bottom isTimeUp={isTimeUp} isTimeShort={isTimeShort} oppChoice={oppChoice}/>
           </div>
         </section>
