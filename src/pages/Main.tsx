@@ -6,8 +6,8 @@ import Result from '../components/Result';
 
 const Home = () => {
 
-  const data = [10, 20, 30, 40, 50, 60, 70, 80, 90];
-  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September'];
+  const data = [2.28, 2.291, 2.27, 2.261, 2.279, 2.286, 2.27, 2.265, 2.279];
+  const labels = ['-9', '-8', '-7', '-6', '-5', '-4', '-3', '-2', '-1'];
 
   const [seconds, setSeconds] = useState(10);
   const [isTimeUp, setIsTimeUp] = useState(false);

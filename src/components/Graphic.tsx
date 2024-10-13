@@ -53,13 +53,13 @@ const Graphic: React.FC<GraphicProps> = ({ data, labels }) => {
       x: {
         title: {
           display: true,
-          text: 'Labels (X-Axis)',  // X-axis title
+          text: '',  // X-axis title
         },
       },
       y: {
         title: {
           display: true,
-          text: 'Values (Y-Axis)',  // Y-axis title
+          text: '',  // Y-axis title
         },
         beginAtZero: false,  // Y-axis starts at zero
       },
