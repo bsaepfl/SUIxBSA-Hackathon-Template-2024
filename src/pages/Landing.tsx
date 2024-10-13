@@ -1,7 +1,16 @@
 import Navbar from '../components/Navbar';
 import { Link } from 'react-router-dom';
+import { useCurrentAccount } from '@mysten/dapp-kit';
+
+
+
+
 
 const Landing = () => {
+
+  const currentAccount = useCurrentAccount()
+  const currentAdress = currentAccount?.address
+
   return (
     <div className="flex justify-center items-center bg-base-200 min-h-screen">
       <Navbar />
