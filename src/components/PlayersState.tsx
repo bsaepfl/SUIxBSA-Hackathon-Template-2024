@@ -34,7 +34,7 @@ const PlayersState: React.FC<PlayersStateProps> = ({ isTimeUp, isTimeShort }) =>
           : sellClicked
           ? "bg-red-200"
           : "bg-transparent"
-      } ${blinking ? "animate-blink-border" : "border-gray-300"}`}
+      } ${(blinking && !isTimeUp)? "animate-blink-border" : "border-gray-300"}`}
     >
       <div className="flex space-x-4 p-4"> {/* Flex container for horizontal alignment */}
         <Buy onClick={handleBuyClick}/>
@@ -43,7 +43,7 @@ const PlayersState: React.FC<PlayersStateProps> = ({ isTimeUp, isTimeShort }) =>
       <div className="mt-4 flex flex-row">
         {buyClicked && <p>You clicked Up!</p>}
         {sellClicked && <p>You clicked Down!</p>}
-        {blinking && <p className="animate-pulse text-red-500">Hurry up!</p>}
+        {blinking && !isTimeUp && <p className="animate-pulse text-red-500">Hurry up!</p>}
       </div>
     </div>
   );

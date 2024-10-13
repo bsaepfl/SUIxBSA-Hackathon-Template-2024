@@ -8,7 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import App from "./App.tsx";
 import { networkConfig } from "./networkConfig.ts";
 import './index.css'; // Import the styles.css file
-import './output17.css';
+import './output911.css';
 
 export const network = import.meta.env.VITE_NETWORK || 'testnet';
 

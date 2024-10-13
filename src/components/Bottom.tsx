@@ -6,13 +6,14 @@ import OpponentState from "./OpponentState";
 interface BottomProps {
   isTimeUp: boolean;
   isTimeShort: boolean;
+  oppChoice: boolean;
 }
 
-const Bottom: React.FC<BottomProps> = ({ isTimeUp, isTimeShort }) => {
+const Bottom: React.FC<BottomProps> = ({ isTimeUp, isTimeShort, oppChoice }) => {
   return (
     <div className="flex flex-row gap-4">
       <PlayersState isTimeUp={isTimeUp} isTimeShort={isTimeShort}/>
-      <OpponentState isTimeUp={isTimeUp} />
+      <OpponentState isTimeUp={isTimeUp} oppChoice={oppChoice}/>
 
     
     </div>

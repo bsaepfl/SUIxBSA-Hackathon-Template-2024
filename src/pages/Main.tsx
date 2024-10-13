@@ -9,10 +9,13 @@ const Home = () => {
   const data = [10, 20, 30, 40, 50, 60, 70, 80, 90];
   const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September'];
 
-
   const [seconds, setSeconds] = useState(10);
   const [isTimeUp, setIsTimeUp] = useState(false);
   const [isTimeShort, setIsTimeShort] = useState(false);
+
+  const [oppChoice, setOppChoice] = useState(false);
+  const [isRoundOver, setIsRoundOver] = useState(false);
+  const [isGameOver, setIsGameOver] = useState(false);
 
   useEffect(() => {
     const countdown = setInterval(() => {
@@ -21,17 +24,28 @@ const Home = () => {
       } else {
         clearInterval(countdown);
         setIsTimeUp(true); // Set the boolean to true when time is up
+
+        if (isRoundOver && !isGameOver) {
+          // Wait for 10 seconds before restarting the countdown
+          setTimeout(() => {
+            setSeconds(10); // Reset the countdown timer
+            setIsTimeUp(false); // Reset time up status
+            setIsTimeShort(false); // Reset short time warning
+            setIsRoundOver(false); // Mark the round as not over, starting a new round
+          }, 10000); // Wait 10 seconds
+        }
       }
+
       if (seconds < 5) {
         setIsTimeShort(true);
       }
     }, 1000);
 
     return () => clearInterval(countdown); // Clear interval on component unmount
-  }, [seconds]);
+  }, [seconds, isRoundOver, isGameOver]);
 
   return (
-    <div className="flex justify-center items-center bg-base-200  " >
+    <div className="flex justify-center items-center bg-base-200">
       <Navbar />
 
       <main className="container mx-auto px-4 mt-20">
@@ -47,7 +61,7 @@ const Home = () => {
               )}
             </div>
             <Graphic data={data} labels={labels} />
-            <Bottom isTimeUp={isTimeUp} isTimeShort={isTimeShort} />
+            <Bottom isTimeUp={isTimeUp} isTimeShort={isTimeShort} oppChoice={oppChoice}/>
           </div>
         </section>
       </main>

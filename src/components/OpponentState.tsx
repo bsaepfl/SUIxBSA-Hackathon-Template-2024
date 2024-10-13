@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import Sell from "./Sell";
-import Buy from "./Buy";
-
 // Define the props type
 interface OpponentStateProps {
   isTimeUp: boolean;
+  oppChoice: boolean;
 }
 
-const OpponentState: React.FC<OpponentStateProps> = ({ isTimeUp }) => {
+const OpponentState: React.FC<OpponentStateProps> = ({ isTimeUp, oppChoice }) => {
   const [buyClicked, setBuyClicked] = useState(false);
   const [sellClicked, setSellClicked] = useState(false);
 
@@ -24,14 +22,11 @@ const OpponentState: React.FC<OpponentStateProps> = ({ isTimeUp }) => {
   };
 
   return (
-    <div className={`flex flex-col items-center justify-center w-64 h-32 border border-gray-300 rounded-lg shadow-lg p-8 ${buyClicked ? 'bg-green-200' : sellClicked ? 'bg-red-200' : 'bg-transparent'}`}>
+    <div className={`flex flex-col items-center justify-center w-64 h-32 border border-gray-300 rounded-lg shadow-lg p-8 ${oppChoice ? 'bg-green-200' : 'bg-redd-200'}`}>
       <div className="flex space-x-4 p-4">
-        <Buy onClick={handleBuyClick}  />
-        <Sell onClick={handleSellClick}  />
-      </div>
-      <div className="mt-4">
-        {buyClicked && <p>You clicked Up!</p>}
-        {sellClicked && <p>You clicked Down!</p>}
+       {!isTimeUp &&  <p>Your opponent is thinking...</p>}
+       {oppChoice && isTimeUp && <p>Your opponent chose Up!</p>}
+        {!oppChoice && isTimeUp && <p>Your opponent chose Down!</p>}
       </div>
     </div>
   );
